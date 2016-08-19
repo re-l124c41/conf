@@ -164,11 +164,11 @@ let g:bufferline_echo = 0
 "" Source plugins settings
 "*****************************************************************************
 
- source /home/dperepelko/.config/nvim/thematicCfg.vim   " Thematic
- source /home/dperepelko/.config/nvim/deopleteCfg.vim   " Doplete
- source /home/dperepelko/.config/nvim/airLineCfg.vim    " AirLine
- source /home/dperepelko/.config/nvim/nerdTreeCfg.vim   " NERDTree
- source /home/dperepelko/.config/nvim/syntasticCfg.vim  " Syntastic
- source /home/dperepelko/.config/nvim/tagBarCfg.vim     " TagBar
-" source /home/dperepelko/.config/nvim/indentLineCfg.vim " Vim Easy Align
- source /home/dperepelko/.config/nvim/viealCfg.vim      " Vim Easy Align
+ source ~/.config/nvim/thematicCfg.vim   " Thematic
+ source ~/.config/nvim/deopleteCfg.vim   " Doplete
+ source ~/.config/nvim/airLineCfg.vim    " AirLine
+ source ~/.config/nvim/nerdTreeCfg.vim   " NERDTree
+ source ~/.config/nvim/syntasticCfg.vim  " Syntastic
+ source ~/.config/nvim/tagBarCfg.vim     " TagBar
+" source ~/.config/nvim/indentLineCfg.vim " Vim Easy Align
+ source ~/.config/nvim/viealCfg.vim      " Vim Easy Align
