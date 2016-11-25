@@ -80,8 +80,11 @@ Plug 'Raimondi/delimitMate'
 " Simple color selector/picker plugin for Vim.
 Plug 'KabbAmine/vCoolor.vim'
 
-" Preview colours in source code while editing
+" preview colours in source code while editing
 Plug 'ap/vim-css-color'
+
+" Join provides more powerful line join features than the build-in :join. 
+Plug 'sk1418/Join'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -154,6 +157,14 @@ set t_Co=256 " Enable 256 colors supprot for airline colors.
 " set statusline+=%c,     "cursor column
 " set statusline+=%l/%L   "cursor line/total lines
 " set statusline+=\ %P    "percent through file
+
+"*****************************************************************************
+" To fix statusline rendering issue.
+" for version older than 2016/05/11 use:
+" set termguicolors
+" source:
+" https://github.com/equalsraf/neovim-qt/issues/164#issuecomment-240717211
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1 
 
 " If vim-bufferline is printing to the statusline as well as the command bar
 " you can disable automatic echoing

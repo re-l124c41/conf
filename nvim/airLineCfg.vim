@@ -3,7 +3,7 @@
 "*****************************************************************************
  let g:airline#extensions#tabline#enabled = 1                                  " Displays all buffers when there's only one tab open.
  let g:airline#extensions#syntastic#enabled = 1                                " Enable syntastic integration
- let g:airline#extensions#tagbar#enabled = 0                                   " Enable/disable tagbar integration
+ let g:airline#extensions#tagbar#enabled = 1                                   " Enable/disable tagbar integration
  let g:airline#extensions#branch#enabled = 1                                   " Enable/disable fugitive/lawrencium integration
  let g:airline#extensions#whitespace#enabled = 0                               " Enable/disable detection of whitespace errors.
  let g:airline#extensions#whitespace#checks = [ 'indent', 'trailing', 'long' ] " Configure which whitespace checks to enable.
@@ -42,9 +42,9 @@ autocmd VimEnter * call AirLineInit()
 " endif
 
 " Configure separators for the tabline only. >
- let g:airline#extensions#tabline#right_sep = '' "''
+ let g:airline#extensions#tabline#right_sep = ''
  let g:airline#extensions#tabline#right_alt_sep = ''
- let g:airline#extensions#tabline#left_sep = ''
+ let g:airline#extensions#tabline#left_sep = ''
  let g:airline#extensions#tabline#left_alt_sep = '' 
 
 " Unicode symbols
@@ -63,9 +63,9 @@ autocmd VimEnter * call AirLineInit()
 " let g:airline_symbols.whitespace = '⮂'
 
 " powerline symbols
-" let g:airline_left_sep = ''
-" let g:airline_left_alt_sep = ''
- let g:airline_right_sep = '' "''
+ let g:airline_left_sep = ''
+ let g:airline_left_alt_sep = ''
+ let g:airline_right_sep = ''
  let g:airline_right_alt_sep = ''
 " let g:airline_symbols.branch = ''
 " let g:airline_symbols.readonly = ''
