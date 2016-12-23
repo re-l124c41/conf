@@ -32,6 +32,9 @@ Plug 'Shougo/neosnippet-snippets'
 " Dark powered asynchronous completion framework for neovim
 Plug 'Shougo/deoplete.nvim'
 
+" Interactive command execution in Vim.
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+
 " This repository contains snippets files for various programming languages.
 Plug 'honza/vim-snippets'
 
@@ -68,14 +71,8 @@ Plug 'tpope/vim-surround'
 " The ultimate undo history visualizer for VIM
 Plug 'mbbill/undotree'
 
-" Indent Guides is a plugin for visually displaying indent levels in Vim.<Paste>
-" Plug 'nathanaelkane/vim-indent-guides'
-
 " Vim plugin, provides insert mode auto-completion for quotes, parens, brackets, etc.
 Plug 'Raimondi/delimitMate'
-
-" A vim plugin to display the indention levels with thin vertical lines.
-" Plug 'Yggdroot/indentLine'
 
 " Simple color selector/picker plugin for Vim.
 Plug 'KabbAmine/vCoolor.vim'
@@ -85,6 +82,14 @@ Plug 'ap/vim-css-color'
 
 " Join provides more powerful line join features than the build-in :join. 
 Plug 'sk1418/Join'
+ 
+" A pathogen installable module for VIM which readies VIM to be used as a Java
+" development environment using the Maven build / dependency management system from Apache.
+Plug 'JalaiAmitahl/maven-compiler.vim'
+
+" Vebugger is yet another debugger frontend plugin for Vim, created because
+" I wasn't happy with the other debugger plugins I found. Vebugger currently supports:
+Plug 'idanarye/vim-vebugger'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -181,5 +186,4 @@ let g:bufferline_echo = 0
  source /home/dperepelko/.config/nvim/nerdTreeCfg.vim   " NERDTree
  source /home/dperepelko/.config/nvim/syntasticCfg.vim  " Syntastic
  source /home/dperepelko/.config/nvim/tagBarCfg.vim     " TagBar
-" source /home/dperepelko/.config/nvim/indentLineCfg.vim " Vim Easy Align
  source /home/dperepelko/.config/nvim/viealCfg.vim      " Vim Easy Align

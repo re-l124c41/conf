@@ -54,7 +54,7 @@ let g:thematic#themes = {
 \ 'TNE'  : {
 \   'colorscheme': 'badwolf',
 \   'laststatus': 2,
-\   'airline-theme': 'Tomorrow-Night-Eighties',
+\   'airline-theme': 'base16_eighties',
 \ },
 \}
 "*****************************************************************************
