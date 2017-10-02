@@ -5,117 +5,131 @@ call plug#begin('~/.config/nvim/plugged')
 
 "" Make sure you use single quotes
 
-" A TON of colorshemes.
-Plug 'flazz/vim-colorschemes'
+"" Syntax file for the groovy programming language
+Plug 'vim-scripts/groovy.vim'
 
-" Wery dark colorscheme.
+"" Colorschemes {{{1
+"" Wery dark colorscheme.
 Plug 'whatyouhide/vim-gotham'
 
-" Conveniently manage Vim’s appearance to suit your task and environment
-Plug 'reedes/vim-thematic'
+"" Feral
+Plug 'glortho/feral-vim'
 
-"Extensible statusline plugin.
-Plug 'bling/vim-airline'
+"" Mustang
+Plug 'croaker/mustang-vim'
 
-" A collection of themes for vim-airline.
-Plug 'vim-airline/vim-airline-themes'
+"" Phoenix
+Plug 'widatama/vim-phoenix'
 
-" A simple, easy-to-use Vim alignment plugin. 
+"" Skull
+Plug 'beigebrucewayne/skull-vim'
+
+"" Jellybeans
+Plug 'nanotech/jellybeans'
+
+"" Badwols 
+Plug 'sjl/badwolf'
+
+"" Atelier Schemes for Vim
+Plug 'atelierbram/vim-colors_atelier-schemes'
+
+"" 1}}}
+
+"" Find And Replace Vim plugin
+Plug 'brooth/far.vim'
+
+"" The purpose of this project is to maintain missing Gradle capabilities in Vim.
+Plug 'gisphm/vim-gradle'
+
+"" A simple, easy-to-use Vim alignment plugin. 
 Plug 'junegunn/vim-easy-align'
 
-" neo-snippet plugin contains neocomplcache snippets source
+"" neo-snippet plugin contains neocomplcache snippets source
 Plug 'Shougo/neosnippet.vim'
 
-" The standard snippets repository for neosnippet
+"" The standard snippets repository for neosnippet
 Plug 'Shougo/neosnippet-snippets'
 
-" Dark powered asynchronous completion framework for neovim
-Plug 'Shougo/deoplete.nvim'
-
-" Interactive command execution in Vim.
-Plug 'Shougo/vimproc.vim', {'do' : 'make'}
-
-" This repository contains snippets files for various programming languages.
+"" This repository contains snippets files for various programming languages.
 Plug 'honza/vim-snippets'
 
-"Outline prowider.
-Plug 'majutsushi/tagbar'
+"" Dark powered asynchronous completion framework for neovim
+Plug 'Shougo/deoplete.nvim'
 
-"Syntax checking plugin.
+"" Interactive command execution in Vim.
+Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+
+""Syntax checking plugin.
 Plug 'scrooloose/syntastic'
 
-"A Vim plugin which shows a git diff in the 'gutter' (sign column).
-"It shows whether each line has been added, modified, and where lines have been removed.
-"You can also stage and revert individual hunks.
-Plug 'airblade/vim-gitgutter'
-
-" The NERD tree allows you to explore your filesystem and to open files and directories.
-" It presents the filesystem to you in the form of a tree which you manipulate with the keyboard and/or mouse.
-" It also allows you to perform simple filesystem operations.
+"" The NERD tree allows you to explore your filesystem and to open files and directories.
+"" It presents the filesystem to you in the form of a tree which you manipulate with the keyboard and/or mouse.
+"" It also allows you to perform simple filesystem operations.
 Plug 'scrooloose/nerdtree'
 
-"Aplugin of NERDTree showing git status flags.
-Plug 'Xuyuanp/nerdtree-git-plugin'
+""A Vim plugin which shows a git diff in the 'gutter' (sign column).
+""It shows whether each line has been added, modified, and where lines have been removed.
+""You can also stage and revert individual hunks.
+Plug 'airblade/vim-gitgutter'
 
-" fugitive.vim
-" I'm not going to lie to you; fugitive.vim may very well be the best Git wrapper of all time.
+"" fugitive.vim
+"" I'm not going to lie to you; fugitive.vim may very well be the best Git wrapper of all time.
 Plug 'tpope/vim-fugitive'
 
-" Surround.vim is all about "surroundings": parentheses, brackets, quotes, XML tags, and more.
-" The plugin provides mappings to easily delete, change and add such surroundings in pairs.
+"" Surround.vim is all about "surroundings": parentheses, brackets, quotes, XML tags, and more.
+"" The plugin provides mappings to easily delete, change and add such surroundings in pairs.
 Plug 'tpope/vim-surround'
 
-" Tabular.vim plugin, by Matt Wozniski, which makes it easy to align regions of text that match a pattern.
-" Plug 'godlygeek/tabular'
-
-" The ultimate undo history visualizer for VIM
+"" The ultimate undo history visualizer for VIM
 Plug 'mbbill/undotree'
 
-" Vim plugin, provides insert mode auto-completion for quotes, parens, brackets, etc.
-Plug 'Raimondi/delimitMate'
-
-" Simple color selector/picker plugin for Vim.
+"" Simple color selector/picker plugin for Vim.
 Plug 'KabbAmine/vCoolor.vim'
-
-" preview colours in source code while editing
-Plug 'ap/vim-css-color'
-
-" Join provides more powerful line join features than the build-in :join. 
-Plug 'sk1418/Join'
  
-" A pathogen installable module for VIM which readies VIM to be used as a Java
-" development environment using the Maven build / dependency management system from Apache.
-Plug 'JalaiAmitahl/maven-compiler.vim'
-
-" Vebugger is yet another debugger frontend plugin for Vim, created because
-" I wasn't happy with the other debugger plugins I found. Vebugger currently supports:
+"" Vebugger is yet another debugger frontend plugin for Vim, created because
+"" I wasn't happy with the other debugger plugins I found. Vebugger currently supports:
 Plug 'idanarye/vim-vebugger'
 
 " Add plugins to &runtimepath
 call plug#end()
 
-"*****************************************************************************
+
+"" Tags settings.
+" When a tag file name starts with "./", the '.' is replaced with the path of
+" the current file. This makes it possible to use a tags file in the directory
+" where the current file is (no matter what the current directory is).
+" The idea of using "./" is that you can define which tag file is searched
+" first: In the current directory ("tags,./tags") or in the directory of the
+" current file ("./tags,tags").
+
+set tags=./tags,tags
+
 "" Python settings
-"*****************************************************************************
-"To point Nvim to a specific Python 3 interpreter, set |g:python3_host_prog|:
+" To point Nvim to a specific Python 3 interpreter, set |g:python3_host_prog|:
+
 let g:python3_host_prog = '/usr/bin/python3'
 
-"*****************************************************************************
 "" Key remaps
-"*****************************************************************************
-"Easier split navigations
-"We can use different key mappings for easy navigation between splits to save a keystroke. So instead of ctrl-w then j, it’s just ctrl-j:
-
+" Easier split navigations
+" We can use different key mappings for easy navigation between splits to save
+" a keystroke. So instead of ctrl-w then j, it’s just ctrl-j:
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 nnoremap <C-h> <C-w>h
 
-"*****************************************************************************
+" The following commands map the 'j' key to execute 'gj' and the 'k' key to
+" execute 'gk'. These are useful for moving between long wrapped lines.
+nnoremap k gk
+nnoremap j gj
+
+" Map <C-[> to <C-T> aka :pop command to navigate between tags with <C-]> and
+" <C-[>
+nmap <C-[> <C-T>
+
 "" Visual Settings
-"*****************************************************************************
 set t_Co=256 " Enable 256 colors supprot for airline colors.
- 
+set diffopt=vertical
 
 "TAB and indent settings
  set expandtab     " always uses spaces instead of tab characters
@@ -129,61 +143,17 @@ set t_Co=256 " Enable 256 colors supprot for airline colors.
  set mousemodel=popup
  set cursorline    " highlight current cursor line
 
-" set gfn=Source\ Code\ Pro\ 10 font
+autocmd vimenter * set foldmethod=indent "fold lines by indentation
 
-" Neovim-qt Guifont command
- command -nargs=? Guifont call rpcnotify(0, 'Gui', 'SetFont', "<args>") | let g:Guifont="<args>"
- Guifont Source\ Code\ Pro:h10
+"" Undo history settings
+set undofile
+set undodir=$HOME/.config/nivm/.undodir
 
-" Disable the blinking cursor.
- set gcr=a:blinkon0
- set scrolloff=3
 
-" Use modeline overrides
- set modeline
- set modelines=10
- 
- set title
- set titleold="Terminal"
- set titlestring=%F
-
- autocmd vimenter * set foldmethod=indent "fold lines by indentation
-
-"*****************************************************************************
-" Statusline settings (if airline installed must be set in its config).
-" set statusline=%t       "tail of the filename
-" set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
-" set statusline+=%{&ff}] "file format
-" set statusline+=%h      "help file flag
-" set statusline+=%m      "modified flag
-" set statusline+=%r      "read only flag
-" set statusline+=%y      "filetype
-" set statusline+=%=      "left/right separator
-" set statusline+=%c,     "cursor column
-" set statusline+=%l/%L   "cursor line/total lines
-" set statusline+=\ %P    "percent through file
-
-"*****************************************************************************
-" To fix statusline rendering issue.
-" for version older than 2016/05/11 use:
-" set termguicolors
-" source:
-" https://github.com/equalsraf/neovim-qt/issues/164#issuecomment-240717211
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1 
-
-" If vim-bufferline is printing to the statusline as well as the command bar
-" you can disable automatic echoing
-let g:bufferline_echo = 0
-"*****************************************************************************
-
-"*****************************************************************************
 "" Source plugins settings
-"*****************************************************************************
-
- source /home/dperepelko/.config/nvim/thematicCfg.vim   " Thematic
- source /home/dperepelko/.config/nvim/deopleteCfg.vim   " Doplete
- source /home/dperepelko/.config/nvim/airLineCfg.vim    " AirLine
- source /home/dperepelko/.config/nvim/nerdTreeCfg.vim   " NERDTree
- source /home/dperepelko/.config/nvim/syntasticCfg.vim  " Syntastic
- source /home/dperepelko/.config/nvim/tagBarCfg.vim     " TagBar
- source /home/dperepelko/.config/nvim/viealCfg.vim      " Vim Easy Align
+ source $HOME/.config/nvim/deoplete.vim    " Doplete
+ source $HOME/.config/nvim/nerdtree.vim    " NERDTree
+ source $HOME/.config/nvim/syntastic.vim   " Syntastic
+ source $HOME/.config/nvim/easyalign.vim   " Vim Easy Align
+ source $HOME/.config/nvim/nerdfont.vim    " Nerd Fonts
+ source $HOME/.config/nvim/undotree.vim    " Undotree config
