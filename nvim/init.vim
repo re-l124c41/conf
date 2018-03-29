@@ -5,35 +5,28 @@ call plug#begin('~/.config/nvim/plugged')
 
 "" Make sure you use single quotes
 
+Plug 'whatyouhide/vim-gotham'
+Plug 'glortho/feral-vim'
+Plug 'kocakosm/hilal'
+Plug 'croaker/mustang-vim'
+Plug 'widatama/vim-phoenix'
+Plug 'beigebrucewayne/skull-vim'
+Plug 'nanotech/jellybeans.vim'
+Plug 'sjl/badwolf'
+
+"" 1}}}
+
+"" Superior Lisp Interaction Mode for Vim ("SLIME for Vim")
+Plug 'kovisoft/slimv'
+
 "" Syntax file for the groovy programming language
 Plug 'vim-scripts/groovy.vim'
 
-"" Colorschemes {{{1
-"" Wery dark colorscheme.
-Plug 'whatyouhide/vim-gotham'
+"" Indent script for groovy programming language
+Plug 'vim-scripts/groovyindent-unix'
 
-"" Feral
-Plug 'glortho/feral-vim'
-
-"" Mustang
-Plug 'croaker/mustang-vim'
-
-"" Phoenix
-Plug 'widatama/vim-phoenix'
-
-"" Skull
-Plug 'beigebrucewayne/skull-vim'
-
-"" Jellybeans
-Plug 'nanotech/jellybeans'
-
-"" Badwols 
-Plug 'sjl/badwolf'
-
-"" Atelier Schemes for Vim
-Plug 'atelierbram/vim-colors_atelier-schemes'
-
-"" 1}}}
+"" Lean & mean status/tabline for vim that's light as air.
+Plug 'vim-airline/vim-airline'
 
 "" Find And Replace Vim plugin
 Plug 'brooth/far.vim'
@@ -102,7 +95,7 @@ call plug#end()
 " first: In the current directory ("tags,./tags") or in the directory of the
 " current file ("./tags,tags").
 
-set tags=./tags,tags
+"set tags=./tags;,tags;,$HOME
 
 "" Python settings
 " To point Nvim to a specific Python 3 interpreter, set |g:python3_host_prog|:
@@ -127,6 +120,20 @@ nnoremap j gj
 " <C-[>
 nmap <C-[> <C-T>
 
+" Search for selected text, forwards or backwards.
+" Stolen from http://vim.wikia.com/wiki/Search_for_visually_selected_text
+vnoremap <silent> * :<C-U>
+  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+  \gvy/<C-R><C-R>=substitute(
+  \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+  \gV:call setreg('"', old_reg, old_regtype)<CR>
+vnoremap <silent> # :<C-U>
+  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+  \gvy?<C-R><C-R>=substitute(
+  \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+  \gV:call setreg('"', old_reg, old_regtype)<CR>
+
+
 "" Visual Settings
 set t_Co=256 " Enable 256 colors supprot for airline colors.
 set diffopt=vertical
@@ -134,9 +141,9 @@ set diffopt=vertical
 "TAB and indent settings
  set expandtab     " always uses spaces instead of tab characters
  set smarttab      " make tab insert indents instead of tabs at the beginning of a line
- set tabstop=2     " size of a hard tabstop
- set shiftwidth=2  " size of an indent
- set softtabstop=2 " a combination of spaces and tabs are used to simulate tab stops at a wid other than the (hard)tabstop
+ set tabstop=3     " size of a hard tabstop
+ set shiftwidth=3  " size of an indent
+" set softtabstop=3 " a combination of spaces and tabs are used to simulate tab stops at a width other than the (hard)tabstop
  syntax on         " enable syntax coloring
  set number        " set ruler
  let no_buffers_menu=1
@@ -147,10 +154,11 @@ autocmd vimenter * set foldmethod=indent "fold lines by indentation
 
 "" Undo history settings
 set undofile
-set undodir=$HOME/.config/nivm/.undodir
+set undodir=$HOME/.config/nvim/.undodir
 
 
 "" Source plugins settings
+ source $HOME/.config/nvim/airline.vim     " Aitline
  source $HOME/.config/nvim/deoplete.vim    " Doplete
  source $HOME/.config/nvim/nerdtree.vim    " NERDTree
  source $HOME/.config/nvim/syntastic.vim   " Syntastic

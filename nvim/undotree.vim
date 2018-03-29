@@ -21,7 +21,7 @@ let g:undotree_HelpLine=0
 " mappings. 
 " The function will be called after the undotree windows is initialized, so the
 " key mappings only works on the undotree windows.
-function g:Undotree_CustomMap()
+function! g:Undotree_CustomMap()
   nmap <buffer> k <plug>UndotreeGoNextState
   nmap <buffer> j <plug>UndotreeGoPreviousState
   nmap <buffer> K <plug>UndotreeGoNextSaved

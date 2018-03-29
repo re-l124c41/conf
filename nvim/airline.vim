@@ -22,9 +22,10 @@
 
 " Every section is composed of parts, and you can reorder and reconfigure them at will.
 function! AirLineInit()
-  let g:airline_section_a = airline#section#create(['mode', ' ', 'branch', 'hunks'])
-  let g:airline_section_b = airline#section#create_left(['%t'])
-  let g:airline_section_c = airline#section#create([''])
+  let g:airline_section_a = airline#section#create(['mode', ' '])
+  let g:airline_section_b = airline#section#create_left(['branch', 'hunks'])
+  let g:airline_section_c = airline#section#create_left(['%t'])
+  let g:airline_section_d = airline#section#create([''])
 endfunction
 autocmd VimEnter * call AirLineInit()
 
@@ -47,6 +48,8 @@ autocmd VimEnter * call AirLineInit()
  let g:airline#extensions#tabline#left_sep = ''
  let g:airline#extensions#tabline#left_alt_sep = ''
 
+" Dictionary for symbols
+let g:airline_symbols = {}
 " Unicode symbols
 " let g:airline_left_sep = '»'
 " let g:airline_left_sep = '▶'
@@ -67,10 +70,10 @@ autocmd VimEnter * call AirLineInit()
  let g:airline_left_alt_sep = ''
  let g:airline_right_sep = ''
  let g:airline_right_alt_sep = ''
-" let g:airline_symbols.branch = ''
-" let g:airline_symbols.readonly = ''
-" let g:airline_symbols.linenr = ''
-" let g:airline_symbols.crypt = '⚷'
+ let g:airline_symbols.branch = ''
+ let g:airline_symbols.readonly = ''
+ let g:airline_symbols.linenr = ''
+ let g:airline_symbols.crypt = '⚷'
 
 " old vim-powerline symbols
 " let g:airline_left_sep = '⮀'
