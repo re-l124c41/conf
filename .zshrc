@@ -42,7 +42,7 @@ get_vcs_info() {
 }
 
 PS1=$'┌[%B%n%b@%m:%~/] [/dev/%y] [$(get_vcs_info)]
-└[%L]> '
+└[%#:%L]> '
 
 autoload -U promptinit
 promptinit
