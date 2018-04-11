@@ -22,27 +22,33 @@ colors
 
 # Allow for functions in the prompt.
 setopt prompt_subst
- 
+
 autoload -Uz vcs_info
 
 zstyle ':vcs_info:*' actionformats \
-    '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f '
+   '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{3}|%F{1}%a%F{5}]%f'
 zstyle ':vcs_info:*' formats       \
-    '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{5}]%f '
+   '%F{5}(%f%s%F{5})%F{3}-%F{5}[%F{2}%b%F{5}]%f'
 zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
 
 zstyle ':vcs_info:*' enable git cvs svn
 
 # or use pre_cmd, see man zshcontrib
 get_vcs_info() {
-  vcs_info 2>/dev/null
-  if [ -n "$vcs_info_msg_0_" ]; then
-    echo "%{$fg[grey]%}${vcs_info_msg_0_}%{$reset_color%}$del"
-  fi
+   vcs_info 2>/dev/null
+   if [ -n "$vcs_info_msg_0_" ]; then
+      echo "%{$fg[grey]%}${vcs_info_msg_0_}%{$reset_color%}$del"
+   fi
 }
 
-PS1=$'┌[%B%n%b@%m:%~/] [/dev/%y] [$(get_vcs_info)]
-└[%#:%L]> '
+function zle-line-init zle-keymap-select {
+   PS1=$'┌[%B%n%b@%m:%~/]-[/dev/%y]-[$(get_vcs_info)]
+└[%#:%L]-[${${KEYMAP/vicmd/NRM}/(main|viins)/INS}] '
+   zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
 
 autoload -U promptinit
 promptinit
