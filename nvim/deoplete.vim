@@ -51,6 +51,13 @@ endif
 " Enable snipMate compatibility feature.
 let g:neosnippet#enable_snipmate_compatibility = 1
 
+" add buffer and tags to sources
+let g:deoplete#sources = get(g:,'deoplete#sources',{})
+let g:deoplete#sources._ = ['buffer', 'tag']
+
+" If it is zero, deoplete collects keywords from buffers of any filetype
+let g:deoplete#buffer#require_same_filetype = 0
+
 " Tell Neosnippet about the other snippets
- let g:neosnippet#snippets_directory='/home/dperepelko/.config/nvim/plugged/vim-snippets/snippets/'
+let g:neosnippet#snippets_directory="$HOME/.config/nvim/plugged/vim-snippets/snippets/"
 

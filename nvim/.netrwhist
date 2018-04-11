@@ -1,2 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='scp://dperepelko@dhcp//etc/dhcp/conf.d/stb/'
+let g:netrw_dirhist_2='scp://dperepelko@dhcp//etc/'
+let g:netrw_dirhist_3='scp://dperepelko@dhcp//etc/dhcp/conf.d/'
+let g:netrw_dirhist_4='scp://dperepelko@dhcp//etc/dhcp/conf.d/stb/'
+let g:netrw_dirhist_5='/.config'
+let g:netrw_dirhist_6='/home/dperepelko'
