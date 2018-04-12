@@ -43,7 +43,7 @@ get_vcs_info() {
 
 function zle-line-init zle-keymap-select {
    PS1=$'┌[%B%n%b@%m:%~/]-[/dev/%y]-[$(get_vcs_info)]
-└[%#:%L]-[${${KEYMAP/vicmd/NRM}/(main|viins)/INS}] '
+└[%#:%L]-[${${KEYMAP/vicmd/NRM}/(main|viins)/INS}]> '
    zle reset-prompt
 }
 
