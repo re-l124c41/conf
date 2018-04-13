@@ -25,11 +25,9 @@ setopt prompt_subst
 
 autoload -Uz vcs_info
 
-zstyle ':vcs_info:*' actionformats \
-   '%F{5}-᚜[%f%s%F{5}]᚛%F{3}-%F{5}᚜[%F{2}%b%F{3}|%F{1}%a%F{5}]᚛%f'
-zstyle ':vcs_info:*' formats       \
-   '%F{5}-᚜[%f%s%F{5}]᚛%F{3}-%F{5}᚜[%F{2}%b%F{5}]᚛%f'
-zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b%F{1}:%F{3}%r'
+zstyle ':vcs_info:*' actionformats '%F{green}-᚜%f%s%F{green}᚛-᚜%f%b|%a%F{green}᚛%f'
+zstyle ':vcs_info:*' formats '%F{green}-᚜%f%s%F{green}᚛-᚜%f%b%F{green}᚛%f'
+zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat '%b:%r'
 
 zstyle ':vcs_info:*' enable git cvs svn
 
@@ -37,13 +35,13 @@ zstyle ':vcs_info:*' enable git cvs svn
 get_vcs_info() {
    vcs_info 2>/dev/null
    if [ -n "$vcs_info_msg_0_" ]; then
-      echo "%{$fg[grey]%}${vcs_info_msg_0_}%{$reset_color%}$del"
+      echo "${vcs_info_msg_0_}$del"
    fi
 }
 
 function zle-line-init zle-keymap-select {
-   PS1=$'┌᚜[%B%n%b@%m:%~/]᚛-᚜[/dev/%y]᚛$(get_vcs_info)>
-└᚜[%#:%L]᚛-᚜[${${KEYMAP/vicmd/NRM}/(main|viins)/INS}]᚛> '
+   PS1=$'%F{green}┌᚜%f%B%n%b@%m:%~%F{green}᚛-᚜%f/dev/%y%F{green}᚛%f$(get_vcs_info)%F{green}>%f
+%F{green}└᚜%f%#:%L%F{green}᚛-᚜%f${${KEYMAP/vicmd/NRM}/(main|viins)/INS}%F{green}᚛>%f '
    zle reset-prompt
 }
 
