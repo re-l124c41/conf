@@ -1,6 +1,8 @@
 
 #keybindings vi-like
 bindkey -v
+
+
 bindkey "^P" vi-up-line-or-history
 bindkey "^N" vi-down-line-or-history
 
@@ -11,12 +13,14 @@ bindkey '^[[3~' delete-char            # Del
 bindkey '^[[5~' vi-backward-blank-word # Page Up
 bindkey '^[[6~' vi-forward-blank-word  # Page Down
 
+#TODO: FIXME
+autoload -Uz up-line-or-beginning-search down-line-or-beginning-search
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
-[[ -n "$key[Up]"   ]] && bindkey -- "$key[Up]"   up-line-or-beginning-search
-[[ -n "$key[Down]" ]] && bindkey -- "$key[Down]" down-line-or-beginning-search
+bindkey -- "^[[A"   up-line-or-beginning-search
+bindkey -- "^[[B" down-line-or-beginning-search
 
-# Initialize colors.
+# Inialize colors.
 autoload -U colors
 colors
 
