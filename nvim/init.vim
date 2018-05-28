@@ -1,6 +1,7 @@
 "*****************************************************************************
 "" VimPlug settings
 "*****************************************************************************
+
 call plug#begin('~/.config/nvim/plugged')
 
 "" Make sure you use single quotes
@@ -13,52 +14,63 @@ Plug 'widatama/vim-phoenix'
 Plug 'beigebrucewayne/skull-vim'
 Plug 'nanotech/jellybeans.vim'
 Plug 'sjl/badwolf'
+Plug 'junegunn/seoul256.vim'
+
 
 "" 1}}}
 
 "" Superior Lisp Interaction Mode for Vim ("SLIME for Vim")
-Plug 'kovisoft/slimv'
+Plug 'kovisoft/slimv', { 'for': 'lisp' }
 
 "" Syntax file for the groovy programming language
-Plug 'vim-scripts/groovy.vim'
+Plug 'vim-scripts/groovy.vim', { 'for': 'groovy' }
 
 "" Indent script for groovy programming language
-Plug 'vim-scripts/groovyindent-unix'
+Plug 'vim-scripts/groovyindent-unix', { 'for': 'groovy' }
 
 "" Lean & mean status/tabline for vim that's light as air.
 Plug 'vim-airline/vim-airline'
+source $HOME/.config/nvim/airline.vim
 
 "" Find And Replace Vim plugin
 Plug 'brooth/far.vim'
 
 "" The purpose of this project is to maintain missing Gradle capabilities in Vim.
-Plug 'gisphm/vim-gradle'
+Plug 'gisphm/vim-gradle', { 'for': 'gradle' }
 
 "" A simple, easy-to-use Vim alignment plugin. 
 Plug 'junegunn/vim-easy-align'
-
-"" neo-snippet plugin contains neocomplcache snippets source
-Plug 'Shougo/neosnippet.vim'
-
-"" The standard snippets repository for neosnippet
-Plug 'Shougo/neosnippet-snippets'
-
-"" This repository contains snippets files for various programming languages.
-Plug 'honza/vim-snippets'
+source $HOME/.config/nvim/easyalign.vim
 
 "" Dark powered asynchronous completion framework for neovim
 Plug 'Shougo/deoplete.nvim'
+source $HOME/.config/nvim/deoplete.vim
+
+"" This repository contains snippets files for various programming languages.
+"Plug 'honza/vim-snippets'
+
+"" neo-snippet plugin contains neocomplcache snippets source
+"Plug 'Shougo/neosnippet.vim'
+
+"" The standard snippets repository for neosnippet
+"Plug 'Shougo/neosnippet-snippets'
 
 "" Interactive command execution in Vim.
-Plug 'Shougo/vimproc.vim', {'do' : 'make'}
+"Plug 'Shougo/vimproc.vim', { 'do' : 'make' }
+
+""" Updated version of the original javacomplete plugin for vim.
+Plug 'artur-shaik/vim-javacomplete2', { 'for': 'java' }
+autocmd! User javacomplete.vim source $HOME/.config/nvim/java-complete.vim
 
 ""Syntax checking plugin.
-Plug 'scrooloose/syntastic'
+"Plug 'scrooloose/syntastic'
+source $HOME/.config/nvim/syntastic.vim
 
 "" The NERD tree allows you to explore your filesystem and to open files and directories.
 "" It presents the filesystem to you in the form of a tree which you manipulate with the keyboard and/or mouse.
 "" It also allows you to perform simple filesystem operations.
 Plug 'scrooloose/nerdtree'
+source $HOME/.config/nvim/nerdtree.vim
 
 ""A Vim plugin which shows a git diff in the 'gutter' (sign column).
 ""It shows whether each line has been added, modified, and where lines have been removed.
@@ -74,14 +86,25 @@ Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
 
 "" The ultimate undo history visualizer for VIM
-Plug 'mbbill/undotree'
+Plug 'mbbill/undotree', { 'on': 'UndotreeShow' }
+autocmd! User undotree.vim source $HOME/.config/nvim/undotree.vim
+
+"" Dadbod is a Vim plugin for interacting with databases. It's a more modern take on dbext.vim
+Plug 'tpope/vim-dadbod'
+source $HOME/.config/nvim/dabod.vim
 
 "" Simple color selector/picker plugin for Vim.
-Plug 'KabbAmine/vCoolor.vim'
+"Plug 'KabbAmine/vCoolor.vim'
+
+"" Typescript syntax files for Vim 
+"Plug 'leafgarland/typescript-vim'
+
+"" A Vim plugin for TypeScript http://www.vim.org/scripts/script.php…
+"Plug 'Quramy/tsuquyomi'
  
 "" Vebugger is yet another debugger frontend plugin for Vim, created because
 "" I wasn't happy with the other debugger plugins I found. Vebugger currently supports:
-Plug 'idanarye/vim-vebugger'
+"Plug 'idanarye/vim-vebugger'
 
 " Add plugins to &runtimepath
 call plug#end()
@@ -116,8 +139,8 @@ nnoremap <C-h> <C-w>h
 nnoremap k gk
 nnoremap j gj
 
-" Map <C-[> to <C-T> aka :pop command to navigate between tags with <C-]> and
-" <C-[>
+" Map <C-[> to <C-T> aka :pop command 
+" navigate between tags with <C-]> and <C-[>
 nmap <C-[> <C-T>
 
 " Search for selected text, forwards or backwards.
@@ -136,6 +159,7 @@ vnoremap <silent> # :<C-U>
 
 "" Visual Settings
 set t_Co=256 " Enable 256 colors supprot for airline colors.
+"" Vim diff vil open vertically splitted
 set diffopt=vertical
 
 "TAB and indent settings
@@ -157,11 +181,3 @@ set undofile
 set undodir=$HOME/.config/nvim/.undodir
 
 
-"" Source plugins settings
- source $HOME/.config/nvim/airline.vim     " Aitline
- source $HOME/.config/nvim/deoplete.vim    " Doplete
- source $HOME/.config/nvim/nerdtree.vim    " NERDTree
- source $HOME/.config/nvim/syntastic.vim   " Syntastic
- source $HOME/.config/nvim/easyalign.vim   " Vim Easy Align
- source $HOME/.config/nvim/nerdfont.vim    " Nerd Fonts
- source $HOME/.config/nvim/undotree.vim    " Undotree config

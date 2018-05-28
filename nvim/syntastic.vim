@@ -14,8 +14,8 @@ set statusline+=%*
 " class path will be read from let g:syntastic_java_javac_classpath = in
 " corresponding config file
 
-let g:syntastic_java_checkers=['javac']
-let g:syntastic_java_javac_config_file_enabled = 1
+" let g:syntastic_java_checkers=['javac']
+" let g:syntastic_java_javac_config_file_enabled = 1
 
 let g:syntastic_groovy_checkers=['groovyc']
 let g:syntastic_groovy_groovyc_config_file_enabled = 1
