@@ -23,25 +23,38 @@
  let g:deoplete#enable_camel_case = 1
 
 " Plugin key-mappings.
- imap <C-k>     <Plug>(neosnippet_expand_or_jump)
- smap <C-k>     <Plug>(neosnippet_expand_or_jump)
- xmap <C-k>     <Plug>(neosnippet_expand_target)
+" imap <C-k>     <Plug>(neosnippet_expand_or_jump)
+" smap <C-k>     <Plug>(neosnippet_expand_or_jump)
+" xmap <C-k>     <Plug>(neosnippet_expand_target)
 
-" SuperTab like snippets behavior.
-imap <expr><TAB>
- \ pumvisible() ? "\<C-n>" :
- \ neosnippet#expandable_or_jumpable() ?
- \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-smap <expr><TAB>
- \ neosnippet#expandable_or_jumpable() ?
- \    "\<Plug>(neosnippet_expand_or_jump)" : "\<TAB>"
-
-" Close popup with <CR> and insert candidate.
-inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-function! s:my_cr_function()
-  return pumvisible() ? deoplete#mappings#close_popup() : "\n"
+" Tab:
+" Vim uses Ctrl-n (next item) and Ctrl-p (previous item),
+" Ctrl-y (accept match) or Ctrl-e (cancel) and so on for completion.
+" See :h ins-completion-menu and :h popupmenu-keys for details.
+"  use <tab> for completion
+function! TabWrap()
+    if pumvisible()
+        return "\<C-N>"
+    elseif neosnippet#expandable_or_jumpable()
+        return "\<Plug>(neosnippet_expand_or_jump)"
+    elseif strpart( getline('.'), 0, col('.') - 1 ) =~ '^\s*$'
+        return "\<tab>"
+    "elseif &omnifunc !~ ''
+    "    return "\<C-X>\<C-O>"
+    else
+        return deoplete#mappings#manual_complete()
+    endif
 endfunction
 
+" SuperTab like snippets behavior.
+imap <silent><expr><TAB> TabWrap()
+smap <silent><expr><TAB> TabWrap()
+
+" Enter: close popup with <CR> and insert candidate.
+inoremap <silent><expr> <CR> pumvisible() ? deoplete#mappings#close_popup() : "<CR>"
+
+" Escape: exit autocompletion, go to Normal mode
+inoremap <silent><expr> <Esc> pumvisible() ? "<C-e><Esc>" : "<Esc>"
 
 " For conceal markers.
 if has('conceal')
@@ -51,9 +64,17 @@ endif
 " Enable snipMate compatibility feature.
 let g:neosnippet#enable_snipmate_compatibility = 1
 
-" add buffer and tags to sources
-let g:deoplete#sources = get(g:,'deoplete#sources',{})
-let g:deoplete#sources._ = ['buffer', 'tag']
+" It is a dictionary to decide use source names.  The key is
+" filetype and the value is source names list.  If the key is
+" "_", the value will be used for default filetypes.  For
+" example, you can load some sources in C++ filetype.
+" If the value is [], it will load all sources.
+"
+" Default value: {}
+call deoplete#custom#option('sources', {
+\ '_': ['file', 'omni',  'tag'],
+\ 'java': ['javacomplete2', 'file', 'buffer'],
+\})
 
 " If it is zero, deoplete collects keywords from buffers of any filetype
 let g:deoplete#buffer#require_same_filetype = 0

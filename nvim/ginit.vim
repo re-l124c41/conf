@@ -7,13 +7,16 @@
 " Starts in fullscreen, Maximized should work too (untested)
 call GuiWindowMaximized(1)
 
+" Disable GUI Tabline
+GuiTabline 0
+
 " Set font on start
-" variable setting not working for somw reason.
+" variable setting not working for some reason.
 " let g:Guifont='Source Code Pro:h10'
   Guifont Source\ Code\ Pro:h10
 
 " set colorscheme
-colorscheme phoenix
+colorscheme jellybeans
 set bg=dark
 
 "" Status line settings

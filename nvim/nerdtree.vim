@@ -46,3 +46,7 @@ let g:WebDevIconsUnicodeGlyphDoubleWidth = 0
 " the amount of space to use after the glyph character (default ' ')
 let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
 
+" For conditional bookmarks per directory
+" if isdirectory(expand(".git"))
+"    let g:NERDTreeBookmarksFile = '.git/.nerdtree-bookmarks'
+" endif

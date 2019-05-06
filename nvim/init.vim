@@ -22,6 +22,9 @@ Plug 'junegunn/seoul256.vim'
 "" Superior Lisp Interaction Mode for Vim ("SLIME for Vim")
 Plug 'kovisoft/slimv', { 'for': 'lisp' }
 
+"" Vim syntax and language settings for RAML
+Plug 'IN3D/vim-raml' ", { 'for': 'groovy' }
+
 "" Syntax file for the groovy programming language
 Plug 'vim-scripts/groovy.vim', { 'for': 'groovy' }
 
@@ -43,17 +46,17 @@ Plug 'junegunn/vim-easy-align'
 source $HOME/.config/nvim/easyalign.vim
 
 "" Dark powered asynchronous completion framework for neovim
-Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/deoplete.nvim', {'do': ':UpdateRemotePlugins'}
 source $HOME/.config/nvim/deoplete.vim
 
-"" This repository contains snippets files for various programming languages.
-"Plug 'honza/vim-snippets'
-
 "" neo-snippet plugin contains neocomplcache snippets source
-"Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet.vim'
+
+"" This repository contains snippets files for various programming languages.
+Plug 'honza/vim-snippets'
 
 "" The standard snippets repository for neosnippet
-"Plug 'Shougo/neosnippet-snippets'
+Plug 'Shougo/neosnippet-snippets'
 
 "" Interactive command execution in Vim.
 "Plug 'Shougo/vimproc.vim', { 'do' : 'make' }
@@ -61,10 +64,6 @@ source $HOME/.config/nvim/deoplete.vim
 """ Updated version of the original javacomplete plugin for vim.
 Plug 'artur-shaik/vim-javacomplete2', { 'for': 'java' }
 autocmd! User javacomplete.vim source $HOME/.config/nvim/java-complete.vim
-
-""Syntax checking plugin.
-"Plug 'scrooloose/syntastic'
-source $HOME/.config/nvim/syntastic.vim
 
 "" The NERD tree allows you to explore your filesystem and to open files and directories.
 "" It presents the filesystem to you in the form of a tree which you manipulate with the keyboard and/or mouse.
@@ -93,6 +92,9 @@ autocmd! User undotree.vim source $HOME/.config/nvim/undotree.vim
 Plug 'tpope/vim-dadbod'
 source $HOME/.config/nvim/dabod.vim
 
+"" Red Language Syntax Highlighting
+Plug 'rebolek/vim-red'
+
 "" Simple color selector/picker plugin for Vim.
 "Plug 'KabbAmine/vCoolor.vim'
 
@@ -102,12 +104,20 @@ source $HOME/.config/nvim/dabod.vim
 "" A Vim plugin for TypeScript http://www.vim.org/scripts/script.php…
 "Plug 'Quramy/tsuquyomi'
  
-"" Vebugger is yet another debugger frontend plugin for Vim, created because
-"" I wasn't happy with the other debugger plugins I found. Vebugger currently supports:
+"" Vebugger is yet another debugger frontend plugin for Vim
 "Plug 'idanarye/vim-vebugger'
+
+"" Vim python-mode. PyLint, Rope, Pydoc, breakpoints from box. 
+Plug 'python-mode/python-mode', { 'branch': 'develop' }
+
 
 " Add plugins to &runtimepath
 call plug#end()
+
+
+""
+" Enable filetype plugins
+filetype plugin on
 
 
 "" Tags settings.
@@ -118,7 +128,7 @@ call plug#end()
 " first: In the current directory ("tags,./tags") or in the directory of the
 " current file ("./tags,tags").
 
-"set tags=./tags;,tags;,$HOME
+set tags=./.tags;,./tags;,tags;,$HOME
 
 "" Python settings
 " To point Nvim to a specific Python 3 interpreter, set |g:python3_host_prog|:
@@ -174,10 +184,13 @@ set diffopt=vertical
  set mousemodel=popup
  set cursorline    " highlight current cursor line
 
-autocmd vimenter * set foldmethod=indent "fold lines by indentation
+
+"" Fild settings
+" Fold lines by indentation
+autocmd vimenter * set foldmethod=indent 
+" Open file and unfold all
+autocmd BufRead * normal zR
 
 "" Undo history settings
 set undofile
 set undodir=$HOME/.config/nvim/.undodir
-
-
