@@ -2,6 +2,9 @@
 "" Deoplete settings
 "*****************************************************************************
 
+" Python 3 provider configuration
+ let g:python3_host_prog = 'python'
+
 " Deoplete gets started automatically when Neovim starts if this value is 1.
  let g:deoplete#enable_at_startup = 1
 
@@ -39,19 +42,18 @@ function! TabWrap()
         return "\<Plug>(neosnippet_expand_or_jump)"
     elseif strpart( getline('.'), 0, col('.') - 1 ) =~ '^\s*$'
         return "\<tab>"
-    "elseif &omnifunc !~ ''
-    "    return "\<C-X>\<C-O>"
     else
-        return deoplete#mappings#manual_complete()
+        return deoplete#mapping#_complete()
     endif
 endfunction
+
 
 " SuperTab like snippets behavior.
 imap <silent><expr><TAB> TabWrap()
 smap <silent><expr><TAB> TabWrap()
 
-" Enter: close popup with <CR> and insert candidate.
-inoremap <silent><expr> <CR> pumvisible() ? deoplete#mappings#close_popup() : "<CR>"
+" Enter: close popup with <CR> and insert candidate mapped to <C-y>.
+inoremap <silent><expr> <CR> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 " Escape: exit autocompletion, go to Normal mode
 inoremap <silent><expr> <Esc> pumvisible() ? "<C-e><Esc>" : "<Esc>"
@@ -71,11 +73,13 @@ let g:neosnippet#enable_snipmate_compatibility = 1
 " If the value is [], it will load all sources.
 "
 " Default value: {}
+" values ['file', 'omni', 'tag', 'buffer'],
 call deoplete#custom#option('sources', {
-\ '_': ['file', 'omni',  'tag'],
+ \ '_': [],
 \ 'java': ['javacomplete2', 'file', 'buffer'],
 \})
 
+let g:loaded_adsffssdf = 1
 " If it is zero, deoplete collects keywords from buffers of any filetype
 let g:deoplete#buffer#require_same_filetype = 0
 

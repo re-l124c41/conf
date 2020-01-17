@@ -1,3 +1,8 @@
+"" Force system language to en
+set langmenu=en_US.UTF-8    " sets the language of the menu (gvim)
+language en                 " sets the language of the messages / ui (vim)
+
+
 "*****************************************************************************
 " Neovim-Qt GUI settings must be placed in ginit.vim file.
 "*****************************************************************************
@@ -10,10 +15,13 @@ call GuiWindowMaximized(1)
 " Disable GUI Tabline
 GuiTabline 0
 
+" Disable GUI PopUP
+GuiPopupmenu 0
+
 " Set font on start
 " variable setting not working for some reason.
 " let g:Guifont='Source Code Pro:h10'
-  Guifont Source\ Code\ Pro:h10
+Guifont! Space\ Mono\ for\ Powerline:h10
 
 " set colorscheme
 colorscheme jellybeans
@@ -55,10 +63,10 @@ set titlestring=%F
 " source:
 " https://github.com/equalsraf/neovim-qt/issues/164#issuecomment-240717211
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1 
-let $TERM=screen-256color
+let $TERM='screen-256color'
 
 " If vim-bufferline is printing to the statusline as well as the command bar
 " you can disable automatic echoing
-let g:bufferline_echo = 0
+"let g:bufferline_echo = 0
 
 "}}}

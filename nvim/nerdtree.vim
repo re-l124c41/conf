@@ -39,6 +39,7 @@ let g:NERDTreeIndicatorMapCustom = {
   \ "Clean"     : "✔︎",
   \ "Unknown"   : "?"
   \ }
+
 " use double-width(1) or single-width(0) glyphs 
 " only manipulates padding, has no effect on terminal or set(guifont) font
 let g:WebDevIconsUnicodeGlyphDoubleWidth = 0
